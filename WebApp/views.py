@@ -13,7 +13,10 @@ def index(request):
     beds=r.beds
     venti=r.venti
     pats=Patient.objects.count()
-    return render(request, "WebApp/index.html", {"pats": pats, "beds": beds, "venti": venti})
+    rec=Patient.objects.filter(status="Recovered").count()
+    treat=Patient.objects.filter(status="Under Treatment").count()
+
+    return render(request, "WebApp/index.html", {"pats": pats, "beds": beds, "venti": venti, "rec": rec, "treat": treat, "doc": 20})
 
 
 def login_view(request):
@@ -28,7 +31,14 @@ def login_view(request):
         # Check if authentication successful
         if user is not None:
             login(request, user)
-            return render(request, "WebApp/index.html", {"i_id": username, "message": f"Logged In as: {i_id}"})
+            r=Resource.objects.order_by('-id')[0]
+            beds=r.beds
+            venti=r.venti
+            pats=Patient.objects.count()
+            rec=Patient.objects.filter(status="Recovered").count()
+            treat=Patient.objects.filter(status="Under Treatment").count()
+
+            return render(request, "WebApp/index.html", {"message": f"Logged In as: {i_id}", "pats": pats, "beds": beds, "venti": venti, "rec": rec, "treat": treat, "doc": 20})
         else:
             return render(request, "WebApp/login.html", {"message": "Invalid username and/or password."})
     else:
@@ -210,3 +220,7 @@ def update(request, id):
 def indirequest(request, id):
     req=Req.objects.get(req_id=id)
     return render (request, "WebApp/indirequest.html", {"req": req})
+
+def addrequest(request, id):
+    req=Req.objects.get(req_id=id)
+    return render (request, "WebApp/addrequest.html", {"req": req})
