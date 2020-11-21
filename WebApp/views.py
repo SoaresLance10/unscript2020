@@ -162,3 +162,15 @@ def reqs(request):
             return render(request, "WebApp/allreqs.html", {"requests": reqs})
         else:
             return render(request, "WebApp/allreqs.html", {"requests": None})
+
+def indipatient(request, id):
+    pat=Patient.objects.get(patient_id=id)
+    return render (request, "WebApp/indipatient.html", {"pat": pat})
+
+def update(request, id):
+    if request.method=="POST":
+        return HttpResponse("hello")
+
+    else:
+        pat=Patient.objects.get(patient_id=id)
+        

@@ -106,7 +106,7 @@
 					{% for patient in patients %}
 						<tr>
 							<th scope="row">{{ patient.patient_id }}</th>
-							<td>{{ patient.name }}</td>
+							<td><a href="{% url 'indipatient' id=patient.patient_id %}">{{ patient.name }}</a></td>
 							<td>{{ patient.status }}</td>
 						</tr>
 					{% endfor %}

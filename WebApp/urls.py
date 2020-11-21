@@ -9,5 +9,6 @@ urlpatterns = [
     path("add", views.add, name="add"),
     path("request", views.req, name="request"),
     path("dashboard", views.dashboard, name="dashboard"),
-    path("requests", views.reqs, name="reqs")
+    path("requests", views.reqs, name="reqs"),
+    path("patient/<id>", views.indipatient, name="indipatient")
 ]

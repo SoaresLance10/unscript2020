@@ -144,7 +144,7 @@ body {
 }
 
 .logo {
-	height: 60px;
+	height: 40px;
 }
 
 .navbar-costum {
@@ -195,6 +195,11 @@ body {
 	overflow-y: auto
 }
 
+.update {
+	color: #50a3a2;
+	height: 40px;
+	width: 350px;
+}
 .mySlides {display: none;}
 img {
 position: center;

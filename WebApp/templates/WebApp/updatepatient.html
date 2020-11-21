@@ -1,0 +1,202 @@
+{% extends "WebApp/layout.html" %}
+{% load static %}
+
+{% block title %}Patient Tracker: Add{% endblock %}
+{% block notif %}
+<div class="notif">
+    {% if user.is_authenticated %}
+        <div class="alert alert-success" role="alert">
+            <center>Logged in as <strong>{{ user.username }}</strong>.</center>
+        </div>
+    {% else %}
+        <div class="alert alert-warning" role="alert">
+            <center>No one is Logged In.</center>
+        </div>
+    {% endif %}
+    {% if message %}
+    <div class="alert alert-success" role="alert">
+      <center><strong>{{ message }}</strong>.</center>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+
+{% block body %}
+<style type="text/css">
+    .wrapper {
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+</style>
+
+<div class="row" style="z-index: 10000;">
+    <div class="col-3 abtimg">
+        <div class="slideshow-container">
+
+            <div class="mySlides fade">
+              <img src="{% static 'WebApp/image/1.jpeg' %}" style="width:100%; padding-top: 90%;">
+            </div>
+            
+            <div class="mySlides fade">
+              <img src="{% static 'WebApp/image/2.jpeg' %}" style="width:100%; padding-top: 90%;">
+            </div>
+            
+            <div class="mySlides fade">
+              <img src="{% static 'WebApp/image/3.jpeg' %}" style="width:100%; padding-top: 90%;">
+            </div>
+      
+            <div class="mySlides fade">
+              <img src="{% static 'WebApp/image/4.jpeg' %}" style="width:100%; padding-top: 90%;">
+            </div>
+      
+            <div class="mySlides fade">
+              <img src="{% static 'WebApp/image/5.jpeg' %}" style="width:100%; padding-top: 90%;">
+            </div>
+            
+            </div>
+            <br>
+            
+            <div style="text-align:center">
+              <span class="dot"></span> 
+              <span class="dot"></span> 
+              <span class="dot"></span> 
+              <span class="dot"></span> 
+              <span class="dot"></span> 
+            </div>
+      
+            <script>
+            var slideIndex = 0;
+            showSlides();
+            
+            function showSlides() {
+              var i;
+              var slides = document.getElementsByClassName("mySlides");
+              var dots = document.getElementsByClassName("dot");
+              for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+              }
+              slideIndex++;
+              if (slideIndex > slides.length) {slideIndex = 1}    
+              for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+              }
+              slides[slideIndex-1].style.display = "block";  
+              dots[slideIndex-1].className += " active";
+              setTimeout(showSlides, 2000); // Change image every 2 seconds
+            }
+            </script>
+    </div>
+    <div class="col-9 login" style="font-size: min(23px,4vw); margin-bottom: 100px;">
+        <center><h1 class=tit>Update Patient Details</h1></center>
+        <br><br>
+        <form class="form" action="{% url 'update' id=pat.patient_id %}" method="post" style="margin-left: 40px; margin-right: 40px;">
+            {% csrf_token %}
+            <div class=row>
+                <div class=col-3>
+                    <div class=row>
+                        <div class="col">
+                            <label>Name:</label>
+                            <input class="form-control intinp inp" type="text" placeholder="Enter Name" name="name" value=pat.name required />
+                        </div>
+                    </div>
+                    <div class=row>
+                        <div class="col">
+                            <label>Age:</label>
+                            <input class="form-control intinp inp" type="number" placeholder="Enter Age" name="age" value=pat.age required />
+                        </div>
+                    </div>
+                    <div class=row>
+                        <div class="col">
+                            <label>Gender:</label>
+                            <select class="form-control inp" name="gender" value=pat.gender required>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Do Not Specify">Do Not Specify</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <label>Address:</label>
+                    <textarea class="form-control inp" rows="8" name= "address" placeholder="Address:" value=pat.address required=""></textarea>
+                </div>
+            </div>
+            <div class=row>
+                <div class="col">
+                    <label>Phone Number:</label>
+                    <input class="form-control intinp inp" type="text" placeholder="Enter Number" name="phone" value=pat.phone required />
+                </div>
+                <div class="col">
+                    <label>Email ID:</label>
+                    <input class="form-control intinp inp" type="text" placeholder="Enter Email" name="email" value=pat.email required />
+                </div>
+            </div>
+            <br><br>
+            <div class=row>
+                <div class="col">
+                    <label>Symptoms:</label>
+                    <textarea class="form-control inp" rows="8" name= "symptoms" placeholder="Symptoms:" value=pat.symptoms required=""></textarea>
+                </div>
+                <div class="col">
+                    <label>Health Details:</label>
+                    <textarea class="form-control inp" rows="8" name= "health_det" placeholder="Health Details:" value=pat.health_det required=""></textarea>
+                </div>
+            </div>
+            <br><br>
+            <div class=row>
+                <div class="col">
+                    <label>Bed Alloted:</label>
+                    <select class="form-control inp" name="bed" value=pat.name required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label>Ventilator Alloted:</label>
+                    <select class="form-control inp" name="venti" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label>Status:</label>
+                    <select class="form-control inp" name="status" required>
+                        <option value="Admitted">Admitted</option>
+                        <option value="Under Treatment">Under Treatment</option>
+                        <option value="Recovered">Recovered</option>
+                        <option value="Deceased">Deceased</option>
+                    </select>
+                </div>
+            </div>
+            <br><br>
+            <div class=row>
+                <div class=col-3>
+                    <div class=row>
+                        <div class="col">
+                            <label>Current Condition:</label>
+                            <select class="form-control inp" name="condi" required>
+                                <option value="Mildly Infected">Mildly Infected</option>
+                                <option value="Under Treatment">Moderately Infected</option>
+                                <option value="Critical">Critical</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class=row>
+                        <div class="col">
+                            <label>Emergency Contact:</label>
+                            <input class="form-control intinp inp" type="text" placeholder="Enter Number" name="emg_phone" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <label>Doctors Notes:</label>
+                    <textarea class="form-control inp" rows="5" name= "notes" placeholder="Notes:" required=""></textarea>
+                </div>
+            </div>
+            <br><br>
+            <center><button type="submit" id="log-button">Submit</button></center>
+        </form>
+    </div>
+  </div>
+{% endblock %}

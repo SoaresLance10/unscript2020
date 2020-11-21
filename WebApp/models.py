@@ -37,6 +37,7 @@ class Req(models.Model):
     name = models.CharField(max_length=64)
     age = models.IntegerField()
     gender = models.CharField(max_length=64)
+    address = models.TextField()
     phone = models.CharField(max_length=64)
     email = models.CharField(max_length=64)
     symptoms = models.TextField()
