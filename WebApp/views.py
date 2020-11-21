@@ -167,7 +167,7 @@ def reqs(request):
             return render(request, "WebApp/allreqs.html", {"requests": None})
 
     else:
-        reqs=Req.objects.all()
+        reqs=Req.objects.all().order_by('-age')
         if reqs:
             return render(request, "WebApp/allreqs.html", {"requests": reqs})
         else:
@@ -224,3 +224,10 @@ def indirequest(request, id):
 def addrequest(request, id):
     req=Req.objects.get(req_id=id)
     return render (request, "WebApp/addrequest.html", {"req": req})
+
+def donor(request):
+    donors=Patient.objects.all().filter(status="Recovered")
+    return render (request, "WebApp/donor.html", {"donors": donors})
+
+def services(request):
+    return render (request, "WebApp/service.html")

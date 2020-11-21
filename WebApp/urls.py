@@ -13,5 +13,7 @@ urlpatterns = [
     path("patient/<id>", views.indipatient, name="indipatient"),
     path("update/<id>", views.update, name="update"),
     path("request/<id>", views.indirequest, name="indirequest"),
-    path("addrequest/<id>", views.addrequest, name="addrequest")
+    path("addrequest/<id>", views.addrequest, name="addrequest"),
+    path("donors", views.donor, name="donor"),
+    path("services", views.services, name="service")
 ]

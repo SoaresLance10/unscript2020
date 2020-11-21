@@ -1,7 +1,7 @@
 {% extends "WebApp/layout.html" %}
 {% load static %}
 
-{% block title %}Patient Tracker: All Patients{% endblock %}
+{% block title %}Patient Tracker: Donors{% endblock %}
 
 {% block body %}
 <style type="text/css">
@@ -70,44 +70,28 @@
 	</div>
 	<div class="col-9 dash">
 		<center>
-            <form action="{% url 'dashboard' %}" method="post">
-                {% csrf_token %}
-                <div class=row>
-                    <div class=col>
-                        <label>Search Database:</label>
-                        <input class="form-control intinp inp" type="text" placeholder="Enter Keyword" name="sp"/>
-                    </div>
-                    <div class=col>
-                        <label>Status:</label>
-                        <select class="form-control inp" name="status">
-                            <option value="Admitted">Admitted</option>
-                            <option value="Under Treatment">Under Treatment</option>
-                            <option value="Recovered">Recovered</option>
-                            <option value="Deceased">Deceased</option>
-                        </select>
-                    </div>
-                </div>
-                <br><br>
-                <center><button type="submit" id="log-button">Submit</button></center>
-                <br><br>
-            </form>
-			{% if patients == None %}
-				<h2 style="font-weight: 900;">No Patients Found...</h2>
-			{% else %}
+			{% if donors == None %}
+				<h2 style="font-weight: 900;">No Donors Found...</h2>
+            {% else %}
+            <br>
+            <h2 style="font-weight: 900;">Contact Patients for Plasma Donation:</h2>
+            <br><br>
 			<table class="table table-striped table-light table-bordered" style="text-align: center;">
 				<thead class="thead-dark">
 					<tr>
 						<th scope="col" id="rank" class=head>ID</th>
 						<th scope="col" class=head>Patient Name</th>
-						<th scope="col" class=head>Status</th>
+                        <th scope="col" class=head>Phone Number</th>
+                        <th scope="col" class=head>Email ID</th>
 					</tr>
 				</thead>
 				<tbody>
-					{% for patient in patients %}
+					{% for donor in donors %}
 						<tr>
-							<th scope="row">{{ patient.patient_id }}</th>
-							<td><a href="{% url 'indipatient' id=patient.patient_id %}">{{ patient.name }}</a></td>
-							<td>{{ patient.status }}</td>
+							<th scope="row">{{ donor.patient_id }}</th>
+                            <td>{{ donor.name }}</td>
+                            <td>{{ donor.phone }}</td>
+							<td>{{ donor.email }}</td>
 						</tr>
 					{% endfor %}
 				</tbody>
