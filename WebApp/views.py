@@ -206,4 +206,7 @@ def update(request, id):
         pat=Patient.objects.get(patient_id=id)
         return render (request, "WebApp/updatepatient.html", {"pat": pat})
 
-       
+
+def indirequest(request, id):
+    req=Req.objects.get(req_id=id)
+    return render (request, "WebApp/indirequest.html", {"req": req})

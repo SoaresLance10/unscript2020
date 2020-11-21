@@ -97,7 +97,7 @@
 					{% for request in requests %}
 						<tr>
 							<th scope="row">{{ request.req_id }}</th>
-							<td><a href="#">{{ request.name }}</a></td>
+							<td><a href="{% url 'indirequest' id=request.req_id %}">{{ request.name }}</a></td>
 							<td>{{ request.emg_phone }}</td>
 						</tr>
 					{% endfor %}

@@ -11,5 +11,6 @@ urlpatterns = [
     path("dashboard", views.dashboard, name="dashboard"),
     path("requests", views.reqs, name="reqs"),
     path("patient/<id>", views.indipatient, name="indipatient"),
-    path("update/<id>", views.update, name="update")
+    path("update/<id>", views.update, name="update"),
+    path("request/<id>", views.indirequest, name="indirequest")
 ]
