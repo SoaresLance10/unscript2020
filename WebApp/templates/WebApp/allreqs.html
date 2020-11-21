@@ -1,0 +1,110 @@
+{% extends "WebApp/layout.html" %}
+{% load static %}
+
+{% block title %}Patient Tracker: All Requests{% endblock %}
+
+{% block body %}
+<style type="text/css">
+	.wrapper {
+		height: 100vh;
+		overflow: scroll;
+		overflow-x: hidden;
+	}
+</style>
+<div class="row">
+	<div class="col-3 abtimg">
+		<div class="slideshow-container">
+
+            <div class="mySlides fade">
+              <img src="{% static 'WebApp/image/1.jpeg' %}" style="width:100%; padding-top: 90%;">
+            </div>
+            
+            <div class="mySlides fade">
+              <img src="{% static 'WebApp/image/2.jpeg' %}" style="width:100%; padding-top: 90%;">
+            </div>
+            
+            <div class="mySlides fade">
+              <img src="{% static 'WebApp/image/3.jpeg' %}" style="width:100%; padding-top: 90%;">
+            </div>
+      
+            <div class="mySlides fade">
+              <img src="{% static 'WebApp/image/4.jpeg' %}" style="width:100%; padding-top: 90%;">
+            </div>
+      
+            <div class="mySlides fade">
+              <img src="{% static 'WebApp/image/5.jpeg' %}" style="width:100%; padding-top: 90%;">
+            </div>
+            
+            </div>
+            <br>
+            
+            <div style="text-align:center">
+              <span class="dot"></span> 
+              <span class="dot"></span> 
+              <span class="dot"></span> 
+              <span class="dot"></span> 
+              <span class="dot"></span> 
+            </div>
+      
+            <script>
+            var slideIndex = 0;
+            showSlides();
+            
+            function showSlides() {
+              var i;
+              var slides = document.getElementsByClassName("mySlides");
+              var dots = document.getElementsByClassName("dot");
+              for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+              }
+              slideIndex++;
+              if (slideIndex > slides.length) {slideIndex = 1}    
+              for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+              }
+              slides[slideIndex-1].style.display = "block";  
+              dots[slideIndex-1].className += " active";
+              setTimeout(showSlides, 2000); // Change image every 2 seconds
+            }
+            </script>
+	</div>
+	<div class="col-9 dash">
+		<center>
+            <form action="{% url 'reqs' %}" method="post">
+                {% csrf_token %}
+                <div class=row>
+                    <div class=col>
+                        <label>Search Database:</label>
+                        <input class="form-control intinp inp" type="text" placeholder="Enter Keyword" name="sp"/>
+                    </div>
+                </div>
+                <br><br>
+                <center><button type="submit" id="log-button">Submit</button></center>
+                <br><br>
+            </form>
+			{% if requests == None %}
+				<h2 style="font-weight: 900;">No Requests Found...</h2>
+			{% else %}
+			<table class="table table-striped table-light table-bordered" style="text-align: center;">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col" id="rank" class=head>ID</th>
+						<th scope="col" class=head>Patient Name</th>
+						<th scope="col" class=head>Emergency Contact</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for request in requests %}
+						<tr>
+							<th scope="row">{{ request.req_id }}</th>
+							<td>{{ request.name }}</td>
+							<td>{{ request.emg_phone }}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			{% endif %}
+		</center>
+	</div>
+</div>
+{% endblock %}

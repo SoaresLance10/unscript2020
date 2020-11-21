@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <nav class="navbar navbar-costum navbar-expand-sm navbar-dark fixed-top" style="z-index: 10003;">
+        <nav class="navbar navbar-costum navbar-expand-sm navbar-dark fixed-top" style="z-index: 100000;">
             <a class="navbar-brand" href="#"><img class=logo src="{% static 'WebApp/image/title.png' %}"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -27,13 +27,13 @@
                     <a class="nav-link" href="{% url 'index' %}" data-target=".navbar-collapse.show">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-target=".navbar-collapse.show">All Patients</a>
+                    <a class="nav-link" href="{%url 'dashboard' %}" data-target=".navbar-collapse.show">All Patients</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'add' %}" data-target=".navbar-collapse.show">Add Patient</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-target=".navbar-collapse.show">View Requests</a>
+                    <a class="nav-link" href="{% url 'reqs' %}" data-target=".navbar-collapse.show">View Requests</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}" data-target=".navbar-collapse.show">Logout</a>
@@ -47,6 +47,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'register' %}" data-target=".navbar-collapse.show">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'request' %}" data-target=".navbar-collapse.show">Request Assistance</a>
                 </li>
                 {% endif %}
             </ul>

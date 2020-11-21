@@ -30,7 +30,7 @@
     }
 </style>
 
-<div class="row" style="z-index: 10000;">
+<div class="row">
     <div class="col-3 abtimg">
         <div class="slideshow-container">
 
@@ -88,9 +88,9 @@
             </script>
     </div>
     <div class="col-9 login" style="font-size: min(23px,4vw); margin-bottom: 100px;">
-        <center><h1 class=tit>Add Patient</h1></center>
+        <center><h1 class=tit>Request Assistance</h1></center>
         <br><br>
-        <form class="form" action="{% url 'add' %}" method="post" style="margin-left: 40px; margin-right: 40px;">
+        <form class="form" action="{% url 'request' %}" method="post" style="margin-left: 40px; margin-right: 40px;">
             {% csrf_token %}
             <div class=row>
                 <div class=col-3>
@@ -139,59 +139,8 @@
                     <textarea class="form-control inp" rows="8" name= "symptoms" placeholder="Symptoms:" required=""></textarea>
                 </div>
                 <div class="col">
-                    <label>Health Details:</label>
-                    <textarea class="form-control inp" rows="8" name= "health_det" placeholder="Health Details:" required=""></textarea>
-                </div>
-            </div>
-            <br><br>
-            <div class=row>
-                <div class="col">
-                    <label>Bed Alloted:</label>
-                    <select class="form-control inp" name="bed" required>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <label>Ventilator Alloted:</label>
-                    <select class="form-control inp" name="venti" required>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <label>Status:</label>
-                    <select class="form-control inp" name="status" required>
-                        <option value="Admitted">Admitted</option>
-                        <option value="Under Treatment">Under Treatment</option>
-                        <option value="Recovered">Recovered</option>
-                        <option value="Deceased">Deceased</option>
-                    </select>
-                </div>
-            </div>
-            <br><br>
-            <div class=row>
-                <div class=col-3>
-                    <div class=row>
-                        <div class="col">
-                            <label>Current Condition:</label>
-                            <select class="form-control inp" name="condi" required>
-                                <option value="Mildly Infected">Mildly Infected</option>
-                                <option value="Under Treatment">Moderately Infected</option>
-                                <option value="Critical">Critical</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class=row>
-                        <div class="col">
-                            <label>Emergency Contact:</label>
-                            <input class="form-control intinp inp" type="text" placeholder="Enter Number" name="emg_phone" required />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-9">
-                    <label>Doctors Notes:</label>
-                    <textarea class="form-control inp" rows="5" name= "notes" placeholder="Notes:" required=""></textarea>
+                    <label>Emergency Contact:</label>
+                    <input class="form-control intinp inp" type="text" placeholder="Enter Number" name="emg_phone" required />
                 </div>
             </div>
             <br><br>
