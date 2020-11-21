@@ -169,8 +169,41 @@ def indipatient(request, id):
 
 def update(request, id):
     if request.method=="POST":
-        return HttpResponse("hello")
+        pat=Patient.objects.get(patient_id=id)
+        now=datetime.datetime.now()
+
+        pat.name=request.POST["name"]
+        pat.age=request.POST["age"]
+        pat.gender=request.POST["gender"]
+        pat.address=request.POST["address"]
+        pat.phone=request.POST["phone"]
+        pat.email=request.POST["email"]
+        pat.symptoms=request.POST["symptoms"]
+        pat.health_det=request.POST["health_det"]
+        pat.bed=request.POST["bed"]
+        pat.venti=request.POST["venti"]
+        pat.status=request.POST["status"]
+        pat.condi=request.POST["condi"]
+        pat.emg_phone=request.POST["emg_phone"]
+        pat.notes=request.POST["notes"]
+        pat.date=now.strftime("%d-%m-%Y")
+
+        pat.save()
+
+        last_res=Resource.objects.order_by('-id')[0]
+        if pat.bed=="No":
+            last_res.beds=int(last_res.beds)+1
+
+        if pat.venti=="No":
+            last_res.venti=int(last_res.venti)+1
+
+        last_res.save()
+        
+        return render(request, "WebApp/index.html", {"message": "Patient Details Updated Successfully"})
+
 
     else:
         pat=Patient.objects.get(patient_id=id)
-        
+        return render (request, "WebApp/updatepatient.html", {"pat": pat})
+
+       

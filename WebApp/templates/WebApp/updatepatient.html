@@ -97,19 +97,19 @@
                     <div class=row>
                         <div class="col">
                             <label>Name:</label>
-                            <input class="form-control intinp inp" type="text" placeholder="Enter Name" name="name" value=pat.name required />
+                            <input class="form-control intinp inp" type="text" placeholder="Enter Name" name="name" value={{pat.name}} required />
                         </div>
                     </div>
                     <div class=row>
                         <div class="col">
                             <label>Age:</label>
-                            <input class="form-control intinp inp" type="number" placeholder="Enter Age" name="age" value=pat.age required />
+                            <input class="form-control intinp inp" type="number" placeholder="Enter Age" name="age" value={{pat.age}} required />
                         </div>
                     </div>
                     <div class=row>
                         <div class="col">
                             <label>Gender:</label>
-                            <select class="form-control inp" name="gender" value=pat.gender required>
+                            <select class="form-control inp" name="gender" value={{pat.gender}} required>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                                 <option value="Do Not Specify">Do Not Specify</option>
@@ -119,49 +119,49 @@
                 </div>
                 <div class="col-9">
                     <label>Address:</label>
-                    <textarea class="form-control inp" rows="8" name= "address" placeholder="Address:" value=pat.address required=""></textarea>
+                    <textarea class="form-control inp" rows="8" name= "address" placeholder="Address:" required="">{{pat.address}}</textarea>
                 </div>
             </div>
             <div class=row>
                 <div class="col">
                     <label>Phone Number:</label>
-                    <input class="form-control intinp inp" type="text" placeholder="Enter Number" name="phone" value=pat.phone required />
+                    <input class="form-control intinp inp" type="text" placeholder="Enter Number" name="phone" value={{pat.phone}} required />
                 </div>
                 <div class="col">
                     <label>Email ID:</label>
-                    <input class="form-control intinp inp" type="text" placeholder="Enter Email" name="email" value=pat.email required />
+                    <input class="form-control intinp inp" type="text" placeholder="Enter Email" name="email" value={{pat.email}} required />
                 </div>
             </div>
             <br><br>
             <div class=row>
                 <div class="col">
                     <label>Symptoms:</label>
-                    <textarea class="form-control inp" rows="8" name= "symptoms" placeholder="Symptoms:" value=pat.symptoms required=""></textarea>
+                    <textarea class="form-control inp" rows="8" name= "symptoms" placeholder="Symptoms:" required="">{{pat.symptoms}}</textarea>
                 </div>
                 <div class="col">
                     <label>Health Details:</label>
-                    <textarea class="form-control inp" rows="8" name= "health_det" placeholder="Health Details:" value=pat.health_det required=""></textarea>
+                    <textarea class="form-control inp" rows="8" name= "health_det" placeholder="Health Details:" required="">{{pat.health_det}}</textarea>
                 </div>
             </div>
             <br><br>
             <div class=row>
                 <div class="col">
                     <label>Bed Alloted:</label>
-                    <select class="form-control inp" name="bed" value=pat.name required>
+                    <select class="form-control inp" name="bed" value={{pat.bed}} required>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>
                 </div>
                 <div class="col">
                     <label>Ventilator Alloted:</label>
-                    <select class="form-control inp" name="venti" required>
+                    <select class="form-control inp" name="venti" value={{pat.venti}} required>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>
                 </div>
                 <div class="col">
                     <label>Status:</label>
-                    <select class="form-control inp" name="status" required>
+                    <select class="form-control inp" name="status" value={{pat.status}} required>
                         <option value="Admitted">Admitted</option>
                         <option value="Under Treatment">Under Treatment</option>
                         <option value="Recovered">Recovered</option>
@@ -175,7 +175,7 @@
                     <div class=row>
                         <div class="col">
                             <label>Current Condition:</label>
-                            <select class="form-control inp" name="condi" required>
+                            <select class="form-control inp" name="condi" value={{pat.condi}} required>
                                 <option value="Mildly Infected">Mildly Infected</option>
                                 <option value="Under Treatment">Moderately Infected</option>
                                 <option value="Critical">Critical</option>
@@ -185,13 +185,13 @@
                     <div class=row>
                         <div class="col">
                             <label>Emergency Contact:</label>
-                            <input class="form-control intinp inp" type="text" placeholder="Enter Number" name="emg_phone" required />
+                            <input class="form-control intinp inp" type="text" placeholder="Enter Number" name="emg_phone" value={{pat.emg_phone}} required />
                         </div>
                     </div>
                 </div>
                 <div class="col-9">
                     <label>Doctors Notes:</label>
-                    <textarea class="form-control inp" rows="5" name= "notes" placeholder="Notes:" required=""></textarea>
+                    <textarea class="form-control inp" rows="5" name= "notes" required="">{{pat.notes}}</textarea>
                 </div>
             </div>
             <br><br>
