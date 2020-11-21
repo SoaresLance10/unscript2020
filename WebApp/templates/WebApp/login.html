@@ -1,0 +1,105 @@
+{% extends "WebApp/layout.html" %}
+{% load static %}
+
+{% block title %}Patient Tracker: Login{% endblock %}
+{% block notif %}
+<div class="notif">
+    {% if user.is_authenticated %}
+        <div class="alert alert-success" role="alert">
+            <center>Logged in as <strong>{{ user.username }}</strong>.</center>
+        </div>
+    {% else %}
+        <div class="alert alert-warning" role="alert">
+            <center>No one is Logged In.</center>
+        </div>
+    {% endif %}
+    {% if message %}
+    <div class="alert alert-success" role="alert">
+      <center>{{ message }}</strong>.</center>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+
+{% block body %}
+<style type="text/css">
+    .wrapper {
+        height: 100vh;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+</style>
+
+<div class="row">
+    <div class="col-3 abtimg">
+        <div class="slideshow-container">
+
+            <div class="mySlides fade">
+              <img src="{% static 'WebApp/image/1.jpeg' %}" style="width:100%; padding-top: 90%;">
+            </div>
+            
+            <div class="mySlides fade">
+              <img src="{% static 'WebApp/image/2.jpeg' %}" style="width:100%; padding-top: 90%;">
+            </div>
+            
+            <div class="mySlides fade">
+              <img src="{% static 'WebApp/image/3.jpeg' %}" style="width:100%; padding-top: 90%;">
+            </div>
+      
+            <div class="mySlides fade">
+              <img src="{% static 'WebApp/image/4.jpeg' %}" style="width:100%; padding-top: 90%;">
+            </div>
+      
+            <div class="mySlides fade">
+              <img src="{% static 'WebApp/image/5.jpeg' %}" style="width:100%; padding-top: 90%;">
+            </div>
+            
+            </div>
+            <br>
+            
+            <div style="text-align:center">
+              <span class="dot"></span> 
+              <span class="dot"></span> 
+              <span class="dot"></span> 
+              <span class="dot"></span> 
+              <span class="dot"></span> 
+            </div>
+      
+            <script>
+            var slideIndex = 0;
+            showSlides();
+            
+            function showSlides() {
+              var i;
+              var slides = document.getElementsByClassName("mySlides");
+              var dots = document.getElementsByClassName("dot");
+              for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+              }
+              slideIndex++;
+              if (slideIndex > slides.length) {slideIndex = 1}    
+              for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+              }
+              slides[slideIndex-1].style.display = "block";  
+              dots[slideIndex-1].className += " active";
+              setTimeout(showSlides, 2000); // Change image every 2 seconds
+            }
+            </script>
+    </div>
+    <div class="col-9 login" style="font-size: min(23px,4vw);">
+        <div class="container">
+            <h1>Welcome</h1>
+          
+            <form class="form1" action="{% url 'login' %}" method="post">
+              {% csrf_token %}
+              <input type="text" name="username" placeholder="User ID">
+              <input type="password" name="password" placeholder="Password">
+              <br>
+              <button type="submit" id="login-button">Login</button>
+            </form>
+          </div>
+    </div>
+  </div>
+{% endblock %}

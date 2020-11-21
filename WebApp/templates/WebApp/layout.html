@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{% static 'trailrun/image/title.ico' %}">
+    <title>{% block title %}Tech Relay{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins" />
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link href="{% static 'WebApp/style.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="navbar navbar-costum navbar-expand-sm navbar-dark fixed-top" style="z-index: 10003;">
+            <a class="navbar-brand" href="#"><img class=logo src="{% static 'WebApp/image/title.png' %}"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}" data-target=".navbar-collapse.show">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-target=".navbar-collapse.show">All Patients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'add' %}" data-target=".navbar-collapse.show">Add Patient</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-target=".navbar-collapse.show">View Requests</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}" data-target=".navbar-collapse.show">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}" data-target=".navbar-collapse.show">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}" data-target=".navbar-collapse.show">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}" data-target=".navbar-collapse.show">Register</a>
+                </li>
+                {% endif %}
+            </ul>
+            </div>
+        </nav>
+
+        {% block notif %}
+        {% endblock %}
+
+        {% block body %}
+        {% endblock %}
+    </div>
+</body>
+{% block scripts %}
+{% endblock %}
+</html>

@@ -1,0 +1,160 @@
+{% extends "WebApp/layout.html" %}
+{% load static %}
+
+{% block title %}Patient Tracker{% endblock %}
+{% block notif %}
+<div class="notif">
+    {% if message %}
+    <div class="alert alert-success" role="alert">
+      <center>{{ message }}</strong></center>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block body %}
+<style type="text/css">
+	.wrapper {
+		height: 100vh;
+		overflow: scroll;
+		overflow-x: hidden;
+	}
+</style>
+<div class="row">
+  <div class="col-3 abtimg">
+  	<div class="slideshow-container">
+
+      <div class="mySlides fade">
+        <img src="{% static 'WebApp/image/1.jpeg' %}" style="width:100%; padding-top: 90%;">
+      </div>
+      
+      <div class="mySlides fade">
+        <img src="{% static 'WebApp/image/2.jpeg' %}" style="width:100%; padding-top: 90%;">
+      </div>
+      
+      <div class="mySlides fade">
+        <img src="{% static 'WebApp/image/3.jpeg' %}" style="width:100%; padding-top: 90%;">
+      </div>
+
+      <div class="mySlides fade">
+        <img src="{% static 'WebApp/image/4.jpeg' %}" style="width:100%; padding-top: 90%;">
+      </div>
+
+      <div class="mySlides fade">
+        <img src="{% static 'WebApp/image/5.jpeg' %}" style="width:100%; padding-top: 90%;">
+      </div>
+      
+      </div>
+      <br>
+      
+      <div style="text-align:center">
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+      </div>
+
+      <script>
+      var slideIndex = 0;
+      showSlides();
+      
+      function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";  
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}    
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+      }
+      </script>
+  </div>
+  <div class="col-9 info" style="font-size: min(23px,4vw);">
+    <div class="row contact" style="background-color: black; font-size: min(20px, 3vw);">
+      <div class="col-4">
+        <center>Emergency Helpline: 9999999999</center>
+      </div>
+      <div class="col-4">
+        <center>General Queries: 9999999999</center>
+      </div>
+      <div class="col-4">
+        <center>Testing Center: 9999999999</center>
+      </div>
+    </div>
+
+    <div class="row stat" style="background-color: black; font-size: min(20px, 3vw);">
+      <div class="col-4">
+        <center>Patients Admitted: 100</center>
+      </div>
+      <div class="col-4">
+        <center>Patients Recovered: 100</center>
+      </div>
+      <div class="col-4">
+        <center>Requests Submitted: 10</center>
+      </div>
+    </div>
+
+    <center style="margin-left: 2vw;">
+    <span style="font-size: min(35px, 4.5vw); font-weight: 900; text-decoration: underline;">What to do to keep yourself and others safe from COVID-19</span>
+    <br><br>
+    <ul style="text-align:left;">
+      <li>Maintain at least a 1-metre distance between yourself and others to reduce your risk of infection when they cough, sneeze or speak. Maintain an even greater distance between yourself and others when indoors. The further away, the better.</li>
+       <li>Make wearing a mask a normal part of being around other people.</li>
+    </ul><br><hr><br>
+    <span style="font-size: min(35px, 4.5vw); font-weight: 900; text-decoration: underline;">Here are the basics of how to wear a mask:</span>
+    <br><br>
+    <ul style="text-align:left;">
+      <li>Clean your hands before you put your mask on, as well as before and after you take it off.</li>
+      <li>Make sure it covers both your nose, mouth and chin.</li>
+    </ul>
+    <br>
+    <u>Here are some specifics on what type of mask to wear and when, depending on how much virus is circulating where you live, where you go and who you are.</u>
+    <br><br>
+    <ul style="text-align: left; margin-left: 4vw;">
+      <li>Wear a fabric mask unless you’re in a particular risk group. This is especially important when you can’t stay physically distanced, particularly in crowded and poorly ventilated indoor settings.</li>
+      <li>Wear a medical/surgical mask if you:
+        <ol style="margin-left: 6vw;">
+          <li>Are over 60,</li>
+          <li>Have underlying medical conditions,</li>
+          <li>Are feeling unwell, and/or</li>
+          <li>Are looking after an ill family member</li>
+        </ol>
+      </li>
+      <li>For more public advice on masks, read our Q&A and watch our  videos. There is also a Q&A focused on masks and children.</li>
+      <li>For health workers, medical masks are essential personal protective equipment when engaging with patients with suspected, probable or confirmed COVID-19. Respirator masks (such as FFP2, FFP3, N95, N99) should be used in settings where procedures generating aerosols are performed and must be fitted to ensure the right size is worn.</li>
+      <li>Find out more about the science of how COVID-19 infects people and our bodies react by watching or reading this interview.</li>
+    </ul>
+    <br><hr><br>
+    <span style="font-size: min(35px, 4.5vw); font-weight: 900; text-decoration: underline;">Don’t forget the basics of good hygiene</span><br><br>
+    <ul style="text-align:left;">
+      <li>Regularly and thoroughly clean your hands with an alcohol-based hand rub or wash them with soap and water. This eliminates germs including viruses that may be on your hands.</li>
+      <li>Avoid touching your eyes, nose and mouth. Hands touch many surfaces and can pick up viruses. Once contaminated, hands can transfer the virus to your eyes, nose or mouth. From there, the virus can enter your body and infect you.</li>
+      <li>Cover your mouth and nose with your bent elbow or tissue when you cough or sneeze. Then dispose of the used tissue immediately into a closed bin and wash your hands. By following good ‘respiratory hygiene’, you protect the people around you from viruses, which cause colds, flu and COVID-19.</li>
+      <li>Clean and disinfect surfaces frequently especially those which are regularly touched, such as door handles, faucets and phone screens.</li>
+    </ul><br><hr><br>
+    <span style="font-size: min(35px, 4.5vw); font-weight: 900; text-decoration: underline;">How to make your environment safer</span><br><br>
+    <ul style="text-align:left;">
+      <li>Avoid the 3Cs: spaces that are closed, crowded or involve close contact.</li>
+      <li>Meet people outside. Outdoor gatherings are safer than indoor ones, particularly if indoor spaces are small and without outdoor air coming in.</li>
+      <li>Avoid crowded or indoor settings but if you can’t, then take precautions.</li>
+    </ul><br><hr><br>
+    <span style="font-size: min(35px, 4.5vw); font-weight: 900; text-decoration: underline;">What to do if you feel unwell</span><br><br>
+    <ul style="text-align:left;">
+      <li>Know the full range of symptoms of COVID-19. The most common symptoms of COVID-19 are fever, dry cough, and tiredness. Other symptoms that are less common and may affect some patients include loss of taste or smell, aches and pains, headache, sore throat, nasal congestion, red eyes, diarrhoea, or a skin rash.</li>
+      <li>Stay home and self-isolate even if you have minor symptoms such as cough, headache, mild fever, until you recover. Call your health care provider or hotline for advice. Have someone bring you supplies. If you need to leave your house or have someone near you, wear a medical mask to avoid infecting others.</li>
+      <li>If you have a fever, cough and difficulty breathing, seek medical attention immediately. Call by telephone first, if you can and follow the directions of your local health authority.</li>
+      <li>Keep up to date on the latest information from trusted sources, such as WHO or your local and national health authorities. Local and national authorities and public health units are best placed to advise on what people in your area should be doing to protect themselves.</li>
+    </ul>
+    </center>
+  </div>
+</div>
+
+{% endblock %}
