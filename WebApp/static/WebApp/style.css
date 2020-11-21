@@ -232,9 +232,9 @@ padding-left: 5%;
 /* Fading animation */
 .fade {
     -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
+    -webkit-animation-duration: 4.5s;
     animation-name: fade;
-    animation-duration: 1.5s;
+    animation-duration: 4.5s;
   }
   
   @-webkit-keyframes fade {
