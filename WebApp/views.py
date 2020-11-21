@@ -198,8 +198,8 @@ def update(request, id):
             last_res.venti=int(last_res.venti)+1
 
         last_res.save()
-        
-        return render(request, "WebApp/index.html", {"message": "Patient Details Updated Successfully"})
+        pc=Patient.objects.count()
+        return render(request, "WebApp/index.html", {"message": "Patient Details Updated Successfully", "beds": last_res.beds, "pats": pc, "venti": last_res.venti})
 
 
     else:
